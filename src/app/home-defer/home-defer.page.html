@@ -6,7 +6,6 @@
 
 <ion-content>
   @defer (when !isLoading) {
-    <ion-searchbar (ionInput)="searchMovie($event)"></ion-searchbar>
   <ion-list>
     @for (item of movies; track item.id) {
     <ion-item button [routerLink]="['/details', item.id]">
@@ -51,15 +50,10 @@
     [buttons]="['Ok']"
     isOpen="true"
   ></ion-alert>
+  } @loading(minimum 2s) {
+  <ion-loading
+    [isOpen]="true"
+    duration="2000"
+  ></ion-loading>
   }
-
-
-  @if(showScrollButton) {
-    <ion-button shape="round" class="scroll-top-button">
-      <ion-icon slot="icon-only" name="arrow-up-sharp"></ion-icon>
-    </ion-button>
-  }
-
 </ion-content>
-
-
